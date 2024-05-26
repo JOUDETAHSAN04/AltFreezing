@@ -1,3 +1,6 @@
+#on the videos and predictions by the model
+
+
 import pandas as pd
 
 # Manually creating the DataFrame using the corrected data
