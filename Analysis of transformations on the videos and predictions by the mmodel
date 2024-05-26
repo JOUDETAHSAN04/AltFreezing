@@ -1,0 +1,48 @@
+import pandas as pd
+
+# Manually creating the DataFrame using the corrected data
+data_sheet2 = pd.DataFrame({
+    'Video Name': ['deepfake1.mp4', 'real1.mp4', 'realfake1.mp4', 'real2.mp4', 'fake1.mp4', 'realfake2.mp4', 'fake2.mp4', 'Fake2.mp4', 
+                   'fake3.mp4', 'Fake.mp4', 'fake4.mp4', 'shiningreal.mp4', 'shiningfilter.mp4'],
+    'Normal (cvt=true)': [0.0983317, 0.1235825, 0.1122564, 0.5427472, 0.0486449, 0.1177753, 0.7518849, 0.7395694, 0.5595495, 0.6979937, 
+                          0.3887538, 0.1122541, 0.4892686],
+    'Salt & Pepper': [0.1174863, 0.2547595, 0.0161892, 0.1712132, 0.0898245, 0.0660888, 0.2181252, 0.3835799, 0.3650250, 0.1082301, 
+                      0.7299044, 0.0161615, 0.1474368],
+    'Gaussian Blur': [0.1178142, 0.1858591, 0.1490696, 0.6791772, 0.0743907, 0.1523724, 0.8775151, 0.8469158, 0.6218015, 0.8731640, 
+                      0.4589361, 0.1490723, 0.4977330],
+    'Gamma Transform 12': [0.9021177, 0.4747251, 0.6646326, 0.6059696, 0.5436431, 0.4925408, 0.7602187, 0.9049928, 0.9301545, 0.9110681, 
+                           0.6830891, 0.6646290, 0.4453695],
+    'Gamma Transform 0.6': [0.4301141, 0.1875519, 0.3902354, 0.7721729, 0.3525154, 0.6010883, 0.7693137, 0.8998067, 0.8248488, 0.9161416, 
+                            0.6506335, 0.3902348, 0.4761065],
+    'Normal (cvt=false)': [0.2117292, 0.1671909, 0.2981330, 0.7691114, 0.3034234, 0.6227714, 0.8057161, 0.9258561, 0.8075185, 0.9048373, 
+                           0.6869152, 0.2981316, 0.5532359]
+})
+
+# Calculate differences between transformed scores and original scores for Normal (cvt=true)
+data_sheet2['Salt & Pepper Difference'] = data_sheet2['Salt & Pepper'] - data_sheet2['Normal (cvt=true)']
+data_sheet2['Gaussian Blur Difference'] = data_sheet2['Gaussian Blur'] - data_sheet2['Normal (cvt=true)']
+data_sheet2['Gamma Transform 12 Difference'] = data_sheet2['Gamma Transform 12'] - data_sheet2['Normal (cvt=true)']
+data_sheet2['Gamma Transform 0.6 Difference'] = data_sheet2['Gamma Transform 0.6'] - data_sheet2['Normal (cvt=true)']
+data_sheet2['Normal (cvt=false) Difference'] = data_sheet2['Normal (cvt=false)'] - data_sheet2['Normal (cvt=true)']
+
+# Renaming video files
+data_sheet2['Video Name'] = ['video1 (deepfake)', 'video2 (real)', 'video3 (deepfake)', 'video4 (real)', 'video5 (deepfake)', 
+                             'video6 (deepfake)', 'video7 (deepfake)', 'video8 (deepfake)', 'video9 (deepfake)', 'video10 (deepfake)', 
+                             'video11 (deepfake)', 'video12 (real)', 'video13 (real)']
+
+# Plot the differences with renamed video files
+plt.figure(figsize=(15, 10))
+plt.plot(data_sheet2['Video Name'], data_sheet2['Salt & Pepper Difference'], label='Salt & Pepper Difference', marker='o')
+plt.plot(data_sheet2['Video Name'], data_sheet2['Gaussian Blur Difference'], label='Gaussian Blur Difference', marker='o')
+plt.plot(data_sheet2['Video Name'], data_sheet2['Gamma Transform 12 Difference'], label='Gamma Transform 12 Difference', marker='o')
+plt.plot(data_sheet2['Video Name'], data_sheet2['Gamma Transform 0.6 Difference'], label='Gamma Transform 0.6 Difference', marker='o')
+plt.plot(data_sheet2['Video Name'], data_sheet2['Normal (cvt=false) Difference'], label='Normal (cvt=false) Difference', marker='o')
+
+plt.xlabel('Video Name')
+plt.ylabel('Difference in Prediction Score')
+plt.title('Impact of Transformations on Prediction Scores (Sheet 2, Renamed Videos)')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
