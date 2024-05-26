@@ -1,0 +1,61 @@
+# Plotting individual charts for each transformation
+
+# Salt & Pepper Noise Difference
+plt.figure(figsize=(12, 8))
+plt.plot(data_sheet2['Video Name'], data_sheet2['Salt & Pepper Difference'], label='Salt & Pepper Noise Difference', marker='o', color='orange')
+plt.xlabel('Video Name')
+plt.ylabel('Difference in Prediction Score')
+plt.title('Impact of Salt & Pepper Noise on Prediction Scores')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Gaussian Blur Difference
+plt.figure(figsize=(12, 8))
+plt.plot(data_sheet2['Video Name'], data_sheet2['Gaussian Blur Difference'], label='Gaussian Blur Difference', marker='o', color='blue')
+plt.xlabel('Video Name')
+plt.ylabel('Difference in Prediction Score')
+plt.title('Impact of Gaussian Blur on Prediction Scores')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Gamma Transform (gamma=12) Difference
+plt.figure(figsize=(12, 8))
+plt.plot(data_sheet2['Video Name'], data_sheet2['Gamma Transform 12 Difference'], label='Gamma Transform (gamma=12) Difference', marker='o', color='red')
+plt.xlabel('Video Name')
+plt.ylabel('Difference in Prediction Score')
+plt.title('Impact of Gamma Transform (gamma=12) on Prediction Scores')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Gamma Transform (gamma=0.6) Difference
+plt.figure(figsize=(12, 8))
+plt.plot(data_sheet2['Video Name'], data_sheet2['Gamma Transform 0.6 Difference'], label='Gamma Transform (gamma=0.6) Difference', marker='o', color='green')
+plt.xlabel('Video Name')
+plt.ylabel('Difference in Prediction Score')
+plt.title('Impact of Gamma Transform (gamma=0.6) on Prediction Scores')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Normal (cvt=false) Difference
+plt.figure(figsize=(12, 8))
+plt.plot(data_sheet2['Video Name'], data_sheet2['Normal (cvt=false) Difference'], label='Normal (cvt=false) Difference', marker='o', color='purple')
+plt.xlabel('Video Name')
+plt.ylabel('Difference in Prediction Score')
+plt.title('Impact of Normal (cvt=false) on Prediction Scores')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
